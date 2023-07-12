@@ -5,7 +5,7 @@ module.exports = {
   authenticateToken: function authenticateToken(req, res, next) {
     const token = req.cookies.access_token
     console.log('Token from cookies:', token)
-    console.log('all req send', req)
+    // console.log('all req send', req)
 
     if (!token) {
       res.locals.message = 'Please log in'
