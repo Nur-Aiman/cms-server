@@ -1,9 +1,7 @@
-import app from './app.js'
+const app = require('./app.js')
 
-
-const PORT = 8080;
-
+const PORT = 8080
 
 app.listen(PORT, () => {
-    console.log("Server run on port 8080");
-});
+  console.log('Server run on port 8080')
+})
