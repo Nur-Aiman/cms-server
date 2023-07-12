@@ -56,7 +56,15 @@ module.exports = {
               `Counsellor login successful. Current user: Email: ${email} Password: ${password} Token: ${accessToken} Role: ${userRole}`
             )
 
-            res.cookie('access_token', accessToken, {})
+            res.cookie('access_token', accessToken, {
+              expires: new Date(Date.now() + 8 * 3600000),
+              httpOnly: true,
+              secure: true,
+              sameSite: 'None',
+              domain: '.onrender.com',
+              path: '/',
+            })
+
             res.status(200).json({
               message: 'Counsellor login successful',
               token: accessToken,
