@@ -56,7 +56,10 @@ module.exports = {
               `Counsellor login successful. Current user: Email: ${email} Password: ${password} Token: ${accessToken} Role: ${userRole}`
             )
 
-            res.cookie('access_token', accessToken)
+            res.cookie('access_token', accessToken, {
+              sameSite: 'None',
+              secure: true,
+            })
 
             res.status(200).json({
               message: 'Counsellor login successful',
