@@ -57,7 +57,7 @@ module.exports = {
             )
 
             res.cookie('access_token', accessToken, {
-              sameSite: 'none',
+              sameSite: false,
               secure: true,
             })
 
