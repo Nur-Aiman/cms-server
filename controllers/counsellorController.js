@@ -56,11 +56,12 @@ module.exports = {
               `Counsellor login successful. Current user: Email: ${email} Password: ${password} Token: ${accessToken} Role: ${userRole}`
             )
 
-            res.cookie('access_token', accessToken, {
-              sameSite: false,
-              secure: true,
-              domain: '.onrender.com',
-            })
+            res.cookie('access_token', accessToken)
+            // {
+            //   sameSite: false,
+            //   secure: true,
+            //   domain: '.onrender.com',
+            // }
 
             res.status(200).json({
               message: 'Counsellor login successful',
