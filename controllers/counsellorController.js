@@ -57,8 +57,6 @@ module.exports = {
             )
 
             res.cookie('access_token', accessToken, {
-              httpOnly: true,
-              secure: true,
               domain: '.onrender.com',
               path: '/',
             })
