@@ -24,10 +24,22 @@ from a different domain (in this case, 'http://localhost:3000') to access the re
 server. The `credentials: true` option allows cookies to be sent with the requests. */
 app.use(
   cors({
+    origin: function (origin, callback) {
+      if (
+        [
+          'https://harmony-hub-counselling-web.onrender.com',
+          'http://localhost:3000',
+        ].includes(origin)
+      ) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
     credentials: true,
-    origin: 'https://harmony-hub-counselling-web.onrender.com',
   })
 )
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
