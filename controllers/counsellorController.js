@@ -59,6 +59,7 @@ module.exports = {
             res.cookie('access_token', accessToken, {
               sameSite: false,
               secure: true,
+              domain: '.onrender.com',
             })
 
             res.status(200).json({
