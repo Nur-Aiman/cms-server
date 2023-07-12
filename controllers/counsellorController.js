@@ -57,10 +57,8 @@ module.exports = {
             )
 
             res.cookie('access_token', accessToken, {
-              expires: new Date(Date.now() + 8 * 3600000),
               httpOnly: true,
               secure: true,
-              sameSite: 'None',
               domain: '.onrender.com',
               path: '/',
             })
