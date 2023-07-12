@@ -22,21 +22,11 @@ app.set('view engine', 'ejs')
 /* This code is enabling Cross-Origin Resource Sharing (CORS) for the Express app. It allows requests
 from a different domain (in this case, 'http://localhost:3000') to access the resources of the
 server. The `credentials: true` option allows cookies to be sent with the requests. */
+
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (
-        [
-          'https://harmony-hub-counselling-web.onrender.com',
-          'http://localhost:3000',
-        ].includes(origin)
-      ) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    },
     credentials: true,
+    origin: 'https://harmony-hub-counselling-web.onrender.com',
   })
 )
 
