@@ -25,8 +25,8 @@ server. The `credentials: true` option allows cookies to be sent with the reques
 
 app.use(
   cors({
-    credentials: true,
     origin: 'https://harmony-hub-counselling-web.onrender.com',
+    credentials: true,
   })
 )
 
