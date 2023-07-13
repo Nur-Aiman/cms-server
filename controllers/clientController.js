@@ -374,9 +374,7 @@ module.exports = {
             }
 
             sessions.forEach((session) => {
-                session.date_time = moment(session.date_time)
-                    .tz('Asia/Kuala_Lumpur')
-                    .format()
+                session.date_time = moment.utc(session.date_time).format()
             })
 
             res.json({
