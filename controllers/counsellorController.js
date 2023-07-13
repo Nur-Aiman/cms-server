@@ -166,8 +166,7 @@ WHERE appointments.appointment_status = $1
             const sessions = sessionsResult.rows
 
             sessions.forEach((session) => {
-                session.date_time = moment
-                    .utc(session.date_time)
+                session.date_time = moment(session.date_time, 'YYYY-MM-DD HH:mm:ss')
                     .tz('Asia/Kuala_Lumpur')
                     .format()
             })
