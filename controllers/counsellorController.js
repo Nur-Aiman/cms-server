@@ -167,7 +167,7 @@ WHERE appointments.appointment_status = $1
 
             sessions.forEach((session) => {
                 session.date_time = moment(session.date_time, 'YYYY-MM-DD HH:mm:ss')
-                    .tz('Asia/Kuala_Lumpur')
+                    .utcOffset('+08:00')
                     .format()
             })
 
