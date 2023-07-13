@@ -374,7 +374,7 @@ module.exports = {
             }
 
             sessions.forEach((session) => {
-                session.date_time = moment.utc(session.date_time).format() + 'Z'
+                session.date_time = moment.utc(session.date_time).format()
             })
 
             res.json({
