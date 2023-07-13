@@ -241,11 +241,11 @@ module.exports = {
 
             const sessions = sessionsResult.rows
 
-            sessions.forEach((session) => {
-                session.date_time = moment(session.date_time)
-                    .tz('Asia/Kuala_Lumpur')
-                    .format()
-            })
+            // sessions.forEach((session) => {
+            //     session.date_time = moment(session.date_time)
+            //         .tz('Asia/Kuala_Lumpur')
+            //         .format()
+            // })
 
             const appointmentData = {...appointment[0], sessions }
 
