@@ -166,9 +166,7 @@ WHERE appointments.appointment_status = $1
             const sessions = sessionsResult.rows
 
             sessions.forEach((session) => {
-                session.date_time = moment(session.date_time)
-                    .subtract(8, 'hours')
-                    .format()
+                session.date_time = moment(session.date_time).format()
             })
 
             res.json({
