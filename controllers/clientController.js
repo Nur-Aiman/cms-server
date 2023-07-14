@@ -47,25 +47,6 @@ module.exports = {
   registerClient: async function registerClient(req, res) {
     // console.log('POST Request', req.body)
 
-    // Check if client already exists
-    try {
-      const clientExists = await query(
-        'SELECT * FROM clients WHERE email = $1',
-        [email]
-      )
-
-      if (clientExists.rowCount > 0) {
-        res
-          .status(400)
-          .json({ message: 'A client with this email already exists' })
-        return
-      }
-    } catch (error) {
-      console.error(error)
-      res.status(500).json({ message: 'Error checking client existence' })
-      return
-    }
-
     const {
       username,
       email,
@@ -105,6 +86,25 @@ module.exports = {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
       res.status(400).json({ message: 'Invalid email format' })
+      return
+    }
+
+    // Check if client already exists
+    try {
+      const clientExists = await query(
+        'SELECT * FROM clients WHERE email = $1',
+        [email]
+      )
+
+      if (clientExists.rowCount > 0) {
+        res
+          .status(400)
+          .json({ message: 'A client with this email already exists' })
+        return
+      }
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: 'Error checking client existence' })
       return
     }
 
