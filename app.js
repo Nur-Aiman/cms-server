@@ -23,12 +23,30 @@ app.set('view engine', 'ejs')
 from a different domain (in this case, 'http://localhost:3000') to access the resources of the
 server. The `credentials: true` option allows cookies to be sent with the requests. */
 
-app.use(
-  cors({
-    origin: 'https://harmony-hub-counselling.zahinzul.com',
-    credentials: true,
-  })
-)
+const allowedOrigins = [
+  'https://harmony-hub-counselling.zahinzul.com',
+  'https://harmony-hub-counselling-web.onrender.com',
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
+
+// app.use(
+//   cors({
+//     origin: 'https://harmony-hub-counselling.zahinzul.com',
+//     credentials: true,
+//   })
+// )
 
 app.use(logger('dev'))
 app.use(express.json())

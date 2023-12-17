@@ -6,11 +6,14 @@ const pool = new Pool({
     user: process.env.PG_USER,
     password: process.env.PG_PASSWORD,
     database: process.env.PG_DATABASE,
-    ssl: process.env.DB_SSL || false,
+    ssl: {
+        rejectUnauthorized: process.env.DB_SSL === 'true' ? true : false
+    },
     max: 20,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
 });
+
 
 const query = async(text, params) => {
     const start = Date.now();
