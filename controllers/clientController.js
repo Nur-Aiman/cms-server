@@ -197,7 +197,7 @@ module.exports = {
               )
               res.cookie('access_token', accessToken, {
                 samSite: 'None',
-                secure: true,
+                secure: false,
               })
               res.status(200).json({
                 message: 'Client login successful',
